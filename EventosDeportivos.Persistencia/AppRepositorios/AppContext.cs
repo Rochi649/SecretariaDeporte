@@ -33,7 +33,10 @@ namespace EventosDeportivos.Persistencia
             if (!oBuilder.IsConfigured)
             {
                 oBuilder
+                //Cadena de conexion a SQLServer para uso de leonardoapd
                     .UseSqlServer("Data Source = localhost; User ID = sa; Password = Leoandres123; Application Name = EventosDeportivos; Initial Catalog = EventosDeportivos");
+                //Utilice la siguiente cadena de conexion si posee la base de datos local y comente la linea anterior.
+                    //.UseSqlServer("Data Source = (local)\\MSSQLServerLocalDB; Initial Catalog = EventosDeportivos");
             }
         }
     }
