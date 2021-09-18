@@ -10,6 +10,7 @@ namespace EventosDeportivos.Dominio
         public TorneoEquipo()
         {
         }
+        public int Id { get; set; }
 
         public int IdEquipo { get; set; }
 
