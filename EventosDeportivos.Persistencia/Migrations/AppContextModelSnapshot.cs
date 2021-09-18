@@ -332,26 +332,13 @@ namespace EventosDeportivos.Persistencia.Migrations
 
             modelBuilder.Entity("EventosDeportivos.Dominio.TorneoEquipo", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int?>("EquipoId")
+                    b.Property<int>("EquipoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdEquipo")
+                    b.Property<int>("TorneoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdTorneo")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TorneoId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EquipoId");
+                    b.HasKey("EquipoId", "TorneoId");
 
                     b.HasIndex("TorneoId");
 
@@ -431,11 +418,15 @@ namespace EventosDeportivos.Persistencia.Migrations
                 {
                     b.HasOne("EventosDeportivos.Dominio.Equipo", "Equipo")
                         .WithMany("TorneoEquipo")
-                        .HasForeignKey("EquipoId");
+                        .HasForeignKey("EquipoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("EventosDeportivos.Dominio.Torneo", "Torneo")
                         .WithMany("TorneoEquipo")
-                        .HasForeignKey("TorneoId");
+                        .HasForeignKey("TorneoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Equipo");
 

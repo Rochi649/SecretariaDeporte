@@ -39,5 +39,11 @@ namespace EventosDeportivos.Persistencia
                     //.UseSqlServer("Data Source = (local)\\MSSQLServerLocalDB; Initial Catalog = EventosDeportivos");
             }
         }
+
+        //Metodo sobrecargado para especificar que la tabla maestro detalle TorneoEquipo posee Ids
+        protected override void OnModelCreating(ModelBuilder modelBuilder) 
+        {
+            modelBuilder.Entity<TorneoEquipo>().HasKey(x => new{x.EquipoId, x.TorneoId});
+        } 
     }
 }

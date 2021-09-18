@@ -10,11 +10,9 @@ namespace EventosDeportivos.Dominio
         public TorneoEquipo()
         {
         }
-        public int Id { get; set; }
+        public int EquipoId { get; set; }
 
-        public int IdEquipo { get; set; }
-
-        public int IdTorneo { get; set; }
+        public int TorneoId { get; set; }
 
         public Torneo Torneo { get; set; }
 

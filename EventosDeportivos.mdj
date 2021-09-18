@@ -5222,7 +5222,7 @@
 											"top": 334,
 											"width": 115.603515625,
 											"height": 13,
-											"text": "+IdEquipo: int",
+											"text": "+EquipoId: int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5239,7 +5239,7 @@
 											"top": 349,
 											"width": 115.603515625,
 											"height": 13,
-											"text": "+IdTorneo: int",
+											"text": "+TorneoId: int",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5746,9 +5746,9 @@
 										"$ref": "AAAAAAF79O4H2HX7A6M="
 									},
 									"font": "Arial;13;0",
-									"left": 278,
+									"left": 276,
 									"top": 549,
-									"width": 18.8017578125,
+									"width": 22.59130859375,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -7031,7 +7031,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF79RGg9q4Nlts="
 							},
-							"name": "IdEquipo",
+							"name": "EquipoId",
 							"type": "int"
 						},
 						{
@@ -7040,7 +7040,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF79RGg9q4Nlts="
 							},
-							"name": "IdTorneo",
+							"name": "TorneoId",
 							"type": "int"
 						},
 						{
@@ -8112,7 +8112,7 @@
 										"$ref": "AAAAAAF7+f/cNfEB/b0="
 									},
 									"font": "Arial;13;0",
-									"left": 557.39453125,
+									"left": 556.68359375,
 									"top": 397,
 									"width": 28.17724609375,
 									"height": 13,
@@ -8127,7 +8127,7 @@
 									"font": "Arial;13;1",
 									"left": 525,
 									"top": 397,
-									"width": 23.39453125,
+									"width": 22.68359375,
 									"height": 13,
 									"text": "link"
 								}
