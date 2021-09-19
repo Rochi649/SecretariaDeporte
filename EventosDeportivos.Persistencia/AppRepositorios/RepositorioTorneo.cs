@@ -42,7 +42,12 @@ namespace EventosDeportivos.Persistencia
             {
                 try
                 {
-                    torneo_a_actualizar = torneo;
+                    torneo_a_actualizar.Nombre = torneo.Nombre;
+                    torneo_a_actualizar.Categoria = torneo.Categoria;
+                    torneo_a_actualizar.FechaInicio = torneo.FechaInicio;
+                    torneo_a_actualizar.FechaFin = torneo.FechaFin;
+                    torneo_a_actualizar.Tipo = torneo.Tipo;
+                    torneo_a_actualizar.MunicipioId = torneo.MunicipioId;
                     _dataBaseContext.SaveChanges();
                     actualizado = true;
                 }
