@@ -62,7 +62,7 @@ namespace EventosDeportivos.Persistencia
         bool IRepositorioTorneo.EliminarTorneo(int idTorneo)
         {
             bool eliminado = false;
-            //Se busca el municipio que se va a eliminar
+            //Se busca el torneo que se va a eliminar
             var torneo = _dataBaseContext.Torneos.Find(idTorneo);
 
             if (torneo != null)

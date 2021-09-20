@@ -35,7 +35,7 @@ namespace EventosDeportivos.Persistencia
         bool IRepositorioEscenario.ActualizarEscenario(Escenario escenario)
         {
             bool actualizado = false;
-            //Se busca la cancha por su Id utilizando la propiedad de la entidad
+            //Se busca el escenario por su Id utilizando la propiedad de la entidad
             var escenario_a_actualizar = _dataBaseContext.Escenarios.Find(escenario.Id);
 
             if (escenario_a_actualizar != null)
@@ -62,7 +62,7 @@ namespace EventosDeportivos.Persistencia
         bool IRepositorioEscenario.EliminarEscenario(int idEscenario)
         {
             bool eliminado = false;
-            //Se busca el municipio que se va a eliminar
+            //Se busca el escenario que se va a eliminar
             var escenario = _dataBaseContext.Escenarios.Find(idEscenario);
 
             if (escenario != null)

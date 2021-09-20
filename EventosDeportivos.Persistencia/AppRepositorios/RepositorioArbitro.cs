@@ -37,7 +37,7 @@ namespace EventosDeportivos.Persistencia
         bool IRepositorioArbitro.ActualizarArbitro(Arbitro arbitro)
         {
             bool actualizado = false;
-            //Se busca la cancha por su Id utilizando la propiedad de la entidad
+            //Se busca el arbitro por su Id utilizando la propiedad de la entidad
             var arbitro_a_actualizar = _dataBaseContext.Arbitros.Find(arbitro.Id);
 
             if (arbitro_a_actualizar != null)
@@ -68,7 +68,7 @@ namespace EventosDeportivos.Persistencia
         bool IRepositorioArbitro.EliminarArbitro(int idArbitro)
         {
             bool eliminado = false;
-            //Se busca el municipio que se va a eliminar
+            //Se busca el arbitro que se va a eliminar
             var arbitro = _dataBaseContext.Arbitros.Find(idArbitro);
 
             if (arbitro != null)
@@ -90,14 +90,14 @@ namespace EventosDeportivos.Persistencia
 
         Arbitro IRepositorioArbitro.BuscarArbitro(int idArbitro)
         {
-            //Se busca la cancha por su Id
+            //Se busca el arbitro por su Id
             Arbitro arbitro = _dataBaseContext.Arbitros.Find(idArbitro);
             return arbitro;
         }
 
         IEnumerable<Arbitro> IRepositorioArbitro.ListarArbitros()
         {
-            //Se retorna un listado de canchas utilizando el objeto _dataBaseContext
+            //Se retorna un listado de arbitros utilizando el objeto _dataBaseContext
             return _dataBaseContext.Arbitros;
         }
     }

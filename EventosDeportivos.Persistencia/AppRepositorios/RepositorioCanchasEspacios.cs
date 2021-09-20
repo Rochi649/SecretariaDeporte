@@ -64,7 +64,7 @@ namespace EventosDeportivos.Persistencia
         bool IRepositorioCanchasEspacios.EliminarCancha(int idCancha)
         {
             bool eliminado = false;
-            //Se busca el municipio que se va a eliminar
+            //Se busca la cancha que se va a eliminar
             var cancha = _dataBaseContext.CanchasEspacios.Find(idCancha);
 
             if (cancha != null)
