@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using EventosDeportivos.Dominio;
 using System.Linq;
 
-namespace EventosDeportivos.Persistencia.AppRepositorios
+namespace EventosDeportivos.Persistencia
 {
     public class RepositorioEscenario : IRepositorioEscenario
     {
@@ -65,7 +65,7 @@ namespace EventosDeportivos.Persistencia.AppRepositorios
             //Se busca el municipio que se va a eliminar
             var escenario = _dataBaseContext.Escenarios.Find(idEscenario);
 
-            if (escenario == null)
+            if (escenario != null)
             {
                 try
                 {

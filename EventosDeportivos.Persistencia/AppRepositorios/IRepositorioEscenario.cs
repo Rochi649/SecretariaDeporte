@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using EventosDeportivos.Dominio;
 
-namespace EventosDeportivos.Persistencia.AppRepositorios
+namespace EventosDeportivos.Persistencia
 {
     public interface IRepositorioEscenario
     {

@@ -4,25 +4,25 @@ using System.Linq;
 
 namespace EventosDeportivos.Persistencia
 {
-    public class RepositorioCanchasEspacios : IRepositorioCanchasEspacios
+    public class RepositorioArbitro : IRepositorioArbitro
     {
         //Propiedades
         private readonly AppContext _dataBaseContext;
 
         //Metodos
         //Constructor
-        public RepositorioCanchasEspacios(AppContext dataBaseContext)
+        public RepositorioArbitro(AppContext dataBaseContext)
         {
             _dataBaseContext = dataBaseContext;
         }
 
-        //Implementado los metodos de la interfaz IRepositorioCanchasEspacios
-        bool IRepositorioCanchasEspacios.CrearCancha(CanchasEspacio cancha)
+        //Implementado los metodos de la interfaz IRepositorioArbitro
+        bool IRepositorioArbitro.CrearArbitro(Arbitro arbitro)
         {
             bool creado = false;
             try
             {
-                _dataBaseContext.CanchasEspacios.Add(cancha);
+                _dataBaseContext.Arbitros.Add(arbitro);
                 //Es necesario guardar los cambios cada vez que se modifica informacion en la base de datos
                 _dataBaseContext.SaveChanges();
                 creado = true;
@@ -34,21 +34,25 @@ namespace EventosDeportivos.Persistencia
             return creado;
         }
 
-        bool IRepositorioCanchasEspacios.ActualizarCancha(CanchasEspacio cancha)
+        bool IRepositorioArbitro.ActualizarArbitro(Arbitro arbitro)
         {
             bool actualizado = false;
             //Se busca la cancha por su Id utilizando la propiedad de la entidad
-            var cancha_a_actualizar = _dataBaseContext.CanchasEspacios.Find(cancha.Id);
+            var arbitro_a_actualizar = _dataBaseContext.Arbitros.Find(arbitro.Id);
 
-            if (cancha_a_actualizar != null)
+            if (arbitro_a_actualizar != null)
             {
                 try
                 {
-                    cancha_a_actualizar.Deporte = cancha.Deporte;
-                    cancha_a_actualizar.Estado = cancha.Estado;
-                    cancha_a_actualizar.Medidas = cancha.Medidas;
-                    cancha_a_actualizar.CapacidadEspectadores = cancha.CapacidadEspectadores;
-                    cancha_a_actualizar.EscenarioId = cancha.EscenarioId;
+                    arbitro_a_actualizar.Documento = arbitro.Documento;
+                    arbitro_a_actualizar.Nombre = arbitro.Nombre;
+                    arbitro_a_actualizar.Apellido = arbitro.Apellido;
+                    arbitro_a_actualizar.Genero = arbitro.Genero;
+                    arbitro_a_actualizar.Telefono = arbitro.Telefono;
+                    arbitro_a_actualizar.Correo = arbitro.Correo;
+                    arbitro_a_actualizar.Deporte = arbitro.Deporte;
+                    arbitro_a_actualizar.TorneoId = arbitro.TorneoId;
+                    arbitro_a_actualizar.EscuelaArbitroId = arbitro.EscuelaArbitroId;
                     _dataBaseContext.SaveChanges();
                     actualizado = true;
                 }
@@ -61,17 +65,17 @@ namespace EventosDeportivos.Persistencia
             return actualizado;
         }
 
-        bool IRepositorioCanchasEspacios.EliminarCancha(int idCancha)
+        bool IRepositorioArbitro.EliminarArbitro(int idArbitro)
         {
             bool eliminado = false;
             //Se busca el municipio que se va a eliminar
-            var cancha = _dataBaseContext.CanchasEspacios.Find(idCancha);
+            var arbitro = _dataBaseContext.Arbitros.Find(idArbitro);
 
-            if (cancha != null)
+            if (arbitro != null)
             {
                 try
                 {
-                    _dataBaseContext.CanchasEspacios.Remove(cancha);
+                    _dataBaseContext.Arbitros.Remove(arbitro);
                     _dataBaseContext.SaveChanges();
                     eliminado = true;
                 }
@@ -84,18 +88,17 @@ namespace EventosDeportivos.Persistencia
             return eliminado;
         }
 
-        CanchasEspacio IRepositorioCanchasEspacios.BuscarCancha(int idCancha)
+        Arbitro IRepositorioArbitro.BuscarArbitro(int idArbitro)
         {
             //Se busca la cancha por su Id
-            CanchasEspacio cancha = _dataBaseContext.CanchasEspacios.Find(idCancha);
-            return cancha;
+            Arbitro arbitro = _dataBaseContext.Arbitros.Find(idArbitro);
+            return arbitro;
         }
 
-        IEnumerable<CanchasEspacio> IRepositorioCanchasEspacios.ListarCanchas()
+        IEnumerable<Arbitro> IRepositorioArbitro.ListarArbitros()
         {
             //Se retorna un listado de canchas utilizando el objeto _dataBaseContext
-            return _dataBaseContext.CanchasEspacios;
+            return _dataBaseContext.Arbitros;
         }
     }
-
 }
