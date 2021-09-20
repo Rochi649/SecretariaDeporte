@@ -9,6 +9,7 @@ namespace EventosDeportivos.Consola
     {
         private static IRepositorioMunicipio _repositorioMunicipio = new RepositorioMunicipio(new EventosDeportivos.Persistencia.AppContext());
         private static IRepositorioTorneo _repositorioTorneo = new RepositorioTorneo(new EventosDeportivos.Persistencia.AppContext());
+        private static IRepositorioEscenario _repositorioEscenario = new RepositorioEscenario(new EventosDeportivos.Persistencia.AppContext());
         static void Main(string[] args)
         {
             /*
@@ -68,9 +69,23 @@ namespace EventosDeportivos.Consola
             }
 
             listarTorneos();
+            
+
+
+            bool creado = crearEscenario();
+
+            if (creado)
+            {
+                Console.WriteLine("Se ha creado satisfactoriamente el escenario");
+            }
+            else
+            {
+                Console.WriteLine("Ha ocurrido un error en la creacion del escenario");
+            }
+            
             */
 
-            listarMunicipios();
+            listarEscenarios();
         }
 
         private static bool crearMunicipio()
@@ -223,6 +238,49 @@ namespace EventosDeportivos.Consola
             });
 
             return actualizado;
+
+        }
+
+        private static bool crearEscenario()
+        {
+            Console.WriteLine("Ingrese el nombre del escenario: ");
+            string nombre = Console.ReadLine();
+            Console.WriteLine("Ingrese la direccion: ");
+            string direccion = Console.ReadLine();
+            Console.WriteLine("Ingrese el telefono: ");
+            var telefono = Console.ReadLine();
+            Console.WriteLine("Ingrese la franja horaria de operacion: ");
+            var horario = Console.ReadLine();
+            listarTorneos();
+            Console.WriteLine("Escoja el torneo al que pertenece: ");
+            int torneoId = int.Parse(Console.ReadLine());
+
+
+            var escenario = new Escenario
+            {
+                Nombre = nombre,
+                Direccion = direccion,
+                Telefono = telefono,
+                Horario = horario,
+                TorneoId = torneoId
+            };
+            bool creado = _repositorioEscenario.CrearEscenario(escenario);
+
+            return creado;
+
+        }
+
+        private static void listarEscenarios()
+        {
+            IEnumerable<Escenario> escenarios = _repositorioEscenario.ListarEscenarios();
+            Console.WriteLine(String.Format("{0,-5} | {1,-38} | {2,-20} | {3,-10} |", "Id", "Nombre", "Direccion", "Telefono"));
+            Console.WriteLine(String.Format("{0,-5} | {1,-38} | {2,-20} | {3,-10} |", "-----", "---------------------", "----------------", "---------"));
+            foreach (var escenario in escenarios)
+            {
+                Console.WriteLine(String.Format("{0,-5} | {1,-38} | {2,-20} | {3,-10} |", escenario.Id, escenario.Nombre, escenario.Direccion, escenario.Telefono));
+                Console.WriteLine(String.Format("{0,-5} | {1,-38} | {2,-20} | {3,-10} |", "-----", "---------------------", "----------------", "---------"));
+            }
+
 
         }
     }
