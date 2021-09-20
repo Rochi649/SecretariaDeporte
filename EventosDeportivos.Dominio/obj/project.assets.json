@@ -8,19 +8,19 @@
     ".NETStandard,Version=v2.1": []
   },
   "packageFolders": {
-    "/Users/leonardoperdomo/.nuget/packages/": {}
+    "C:\\Users\\YESSICA\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Dominio/EventosDeportivos.Dominio.csproj",
+      "projectUniqueName": "D:\\retoCicloIII\\SecretariaDeporte\\EventosDeportivos.Dominio\\EventosDeportivos.Dominio.csproj",
       "projectName": "EventosDeportivos.Dominio",
-      "projectPath": "/Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Dominio/EventosDeportivos.Dominio.csproj",
-      "packagesPath": "/Users/leonardoperdomo/.nuget/packages/",
-      "outputPath": "/Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Dominio/obj/",
+      "projectPath": "D:\\retoCicloIII\\SecretariaDeporte\\EventosDeportivos.Dominio\\EventosDeportivos.Dominio.csproj",
+      "packagesPath": "C:\\Users\\YESSICA\\.nuget\\packages\\",
+      "outputPath": "D:\\retoCicloIII\\SecretariaDeporte\\EventosDeportivos.Dominio\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/leonardoperdomo/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\YESSICA\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
@@ -56,7 +56,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.413/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.412\\RuntimeIdentifierGraph.json"
       }
     }
   }

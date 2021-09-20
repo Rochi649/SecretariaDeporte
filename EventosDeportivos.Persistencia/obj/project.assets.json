@@ -7263,19 +7263,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/leonardoperdomo/.nuget/packages/": {}
+    "C:\\Users\\YESSICA\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Persistencia/EventosDeportivos.Persistencia.csproj",
+      "projectUniqueName": "D:\\retoCicloIII\\SecretariaDeporte\\EventosDeportivos.Persistencia\\EventosDeportivos.Persistencia.csproj",
       "projectName": "EventosDeportivos.Persistencia",
-      "projectPath": "/Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Persistencia/EventosDeportivos.Persistencia.csproj",
-      "packagesPath": "/Users/leonardoperdomo/.nuget/packages/",
-      "outputPath": "/Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Persistencia/obj/",
+      "projectPath": "D:\\retoCicloIII\\SecretariaDeporte\\EventosDeportivos.Persistencia\\EventosDeportivos.Persistencia.csproj",
+      "packagesPath": "C:\\Users\\YESSICA\\.nuget\\packages\\",
+      "outputPath": "D:\\retoCicloIII\\SecretariaDeporte\\EventosDeportivos.Persistencia\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/leonardoperdomo/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\YESSICA\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
@@ -7286,8 +7286,8 @@
       "frameworks": {
         "netstandard2.1": {
           "projectReferences": {
-            "/Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Dominio/EventosDeportivos.Dominio.csproj": {
-              "projectPath": "/Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Dominio/EventosDeportivos.Dominio.csproj"
+            "D:\\retoCicloIII\\SecretariaDeporte\\EventosDeportivos.Dominio\\EventosDeportivos.Dominio.csproj": {
+              "projectPath": "D:\\retoCicloIII\\SecretariaDeporte\\EventosDeportivos.Dominio\\EventosDeportivos.Dominio.csproj"
             }
           }
         }
@@ -7337,7 +7337,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.413/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.412\\RuntimeIdentifierGraph.json"
       }
     }
   }

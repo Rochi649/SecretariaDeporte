@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nuSpWjRHkh27PaOIHoqgBCd0b4UitPZaobz9PKi1PhNcnCGrku1i3GkuxmP4zlHZ/Xq8Iu0ebw/2XibW6Ae/Pw==",
+  "dgSpecHash": "aVE5FFFsfNe11hMuWpvj4LCV/gJLcdhX59swg61wAo2DPx3t3kAw/zMmiVz6qnPkgLLRtInwXYrFmxKbk4YmjQ==",
   "success": true,
-  "projectFilePath": "/Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Dominio/EventosDeportivos.Dominio.csproj",
+  "projectFilePath": "D:\\retoCicloIII\\SecretariaDeporte\\EventosDeportivos.Dominio\\EventosDeportivos.Dominio.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

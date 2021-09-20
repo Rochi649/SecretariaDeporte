@@ -10,3 +10,15 @@
 /Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Persistencia/obj/Debug/netstandard2.1/EventosDeportivos.Persistencia.csproj.CopyComplete
 /Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Persistencia/obj/Debug/netstandard2.1/EventosDeportivos.Persistencia.dll
 /Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Persistencia/obj/Debug/netstandard2.1/EventosDeportivos.Persistencia.pdb
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Persistencia\bin\Debug\netstandard2.1\EventosDeportivos.Persistencia.deps.json
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Persistencia\bin\Debug\netstandard2.1\EventosDeportivos.Persistencia.dll
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Persistencia\bin\Debug\netstandard2.1\EventosDeportivos.Persistencia.pdb
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Persistencia\bin\Debug\netstandard2.1\EventosDeportivos.Dominio.dll
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Persistencia\bin\Debug\netstandard2.1\EventosDeportivos.Dominio.pdb
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Persistencia\obj\Debug\netstandard2.1\EventosDeportivos.Persistencia.csprojAssemblyReference.cache
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Persistencia\obj\Debug\netstandard2.1\EventosDeportivos.Persistencia.AssemblyInfoInputs.cache
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Persistencia\obj\Debug\netstandard2.1\EventosDeportivos.Persistencia.AssemblyInfo.cs
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Persistencia\obj\Debug\netstandard2.1\EventosDeportivos.Persistencia.csproj.CoreCompileInputs.cache
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Persistencia\obj\Debug\netstandard2.1\EventosDeportivos.Persistencia.csproj.CopyComplete
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Persistencia\obj\Debug\netstandard2.1\EventosDeportivos.Persistencia.dll
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Persistencia\obj\Debug\netstandard2.1\EventosDeportivos.Persistencia.pdb

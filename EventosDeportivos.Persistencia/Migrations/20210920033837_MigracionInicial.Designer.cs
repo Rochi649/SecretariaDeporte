@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventosDeportivos.Persistencia.Migrations
 {
     [DbContext(typeof(AppContext))]
-    [Migration("20210918183923_PrimeraMigracion")]
-    partial class PrimeraMigracion
+    [Migration("20210920033837_MigracionInicial")]
+    partial class MigracionInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

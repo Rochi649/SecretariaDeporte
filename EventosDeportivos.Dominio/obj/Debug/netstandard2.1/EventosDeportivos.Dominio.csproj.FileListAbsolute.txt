@@ -7,3 +7,12 @@
 /Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Dominio/bin/Debug/netstandard2.1/EventosDeportivos.Dominio.pdb
 /Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Dominio/obj/Debug/netstandard2.1/EventosDeportivos.Dominio.dll
 /Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Dominio/obj/Debug/netstandard2.1/EventosDeportivos.Dominio.pdb
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Dominio\bin\Debug\netstandard2.1\EventosDeportivos.Dominio.deps.json
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Dominio\bin\Debug\netstandard2.1\EventosDeportivos.Dominio.dll
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Dominio\bin\Debug\netstandard2.1\EventosDeportivos.Dominio.pdb
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Dominio\obj\Debug\netstandard2.1\EventosDeportivos.Dominio.csprojAssemblyReference.cache
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Dominio\obj\Debug\netstandard2.1\EventosDeportivos.Dominio.AssemblyInfoInputs.cache
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Dominio\obj\Debug\netstandard2.1\EventosDeportivos.Dominio.AssemblyInfo.cs
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Dominio\obj\Debug\netstandard2.1\EventosDeportivos.Dominio.csproj.CoreCompileInputs.cache
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Dominio\obj\Debug\netstandard2.1\EventosDeportivos.Dominio.dll
+D:\retoCicloIII\SecretariaDeporte\EventosDeportivos.Dominio\obj\Debug\netstandard2.1\EventosDeportivos.Dominio.pdb
