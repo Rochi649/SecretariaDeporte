@@ -1,0 +1,52 @@
+﻿@page
+@model EventosDeportivos.Presentacion.Pages.TorneoModel
+@{
+    ViewData["Title"] = "Gestionar Torneos";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <h1>@ViewData["Title"]</h1>
+
+    <form>
+        <ul>
+            <li>
+                <label>Nombre: </label>
+                <input type="text" name="Nombre" placeholder="Nombre del Torneo" />
+            </li>
+            <li>
+                <label>Categoria: </label>
+                <input type="text" name="Categoria" placeholder="Categoria del Torneo" />
+            </li>
+            <li>
+                <label>Fecha de Inicio: </label>
+                <input type="date" name="FechaInicio"  />
+            </li>
+            <li>
+                <label>Fecha de Cierre: </label>
+                <input type="date" name="FechaFin"  />
+            </li>
+            <li>
+                <label>Tipo de Torneo: </label>
+                <input type="Text" name="TipoTorneo"  />
+            </li>
+            <li>
+                <label>Municipio donde se Realiza: </label>
+                <select>
+                    <option>Santa Marta</option>
+                </select>
+            </li>
+        </ul>
+
+    </form>
+</body>
+
+</html>
