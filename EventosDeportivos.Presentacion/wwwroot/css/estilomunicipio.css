@@ -1,5 +1,3 @@
-#cuerpoMunicipio {
-    display: flex;
-    justify-content: center;
+.tabla {
+    padding-left: 100px;
 }
-

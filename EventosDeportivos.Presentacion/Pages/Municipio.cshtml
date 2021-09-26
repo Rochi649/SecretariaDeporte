@@ -1,49 +1,80 @@
 ﻿@page
 @model EventosDeportivos.Presentacion.Pages.MunicipioModel
 @{
+   
 }
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gestion de Municipios</title>
-    <link rel="stylesheet" href="~/css/estilomunicipio.css" />
+    <link href="https://cdn.datatables.net/1.11.2/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/css/estilomunicipio.css">
 </head>
 
 <body>
-
-    <div id="cuerpoMunicipio">
-        <h1>Gestion de Municipios</h1>
-
-        <form action="post">
-            <label>Nombre: </label>
-            <input type="text" name="nombre" placeholder="Ingrese el nombre" />
-        </form>
-
-        <br>
-        <table class="table table-striped table-bordered table-condensed">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                </tr>
-            </thead>
-
-            @foreach (var municipio in Model.municipios)
-            {
-                <tbody>
-                    <tr>
-                        <td>@municipio.Id</td>
-                        <td>@municipio.Nombre</td>
-                    </tr>
-                </tbody>
-            }
-        </table>
+    <h2>Gestion de Municipios</h2>
+    <div class="container">
+        @* Se utiliza las clases container, row y col para dividir la pantalla con bootstrap *@
+        <div class="row">
+            <div class="col">
+                @* Es necesario el metodo post para enviar los datos del formulario *@
+                <form method="post" >
+                        <div>
+                            @* Los datos del formulario se reciben gracias al asp-for y al name en el input *@
+                            <label asp-for="Municipio.Nombre" class="form-label">Nombre: </label>
+                            <input asp-for="Municipio.Nombre" type="text" class="form-control" name="Municipio.Nombre"/>
+                        </div>
+                        @* Se agrega un margin en linea para separa el boton del textfield *@
+                        <div style="margin-top: 20px">
+                             <button type="submit" class="btn btn-primary">Crear</button>
+                        </div>
+                </form>
+            </div>
+            <div class="col">
+                <table id="example" class="mdl-data-table table table-striped tabla" style="width: 100%">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th width="100px">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @* Se realiza un recorrido en el objeto municipio del Model.Municipio para con ayuda del foreach mostrarlo
+                        en una tabla html *@
+                    @foreach (var municipio in Model.municipios)
+                    {
+                            <tr>
+                                <td>@municipio.Id</td>
+                                <td>@municipio.Nombre</td>
+                                <td>
+                                    <a class="btn btn-danger btn-sm table-btn"><i class="fas fa-backspace"></i></a>
+                                    <a class="btn btn-primary btn-sm table-btn"><i class="fas fa-edit"></i></a>
+                                </td>                                
+                            </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+    @* Se utiliza jquery y demas para poder desplegar las datatables *@
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.2/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/js/all.js" integrity="sha512-3g7yqwo1stj1EMzNXYPbV8pqgW0ZhaQsi9iyMP+hvQCIFcdt0AWw5onarTYjklFtIuCf/RvE2MGnr+5tZ1WzFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @* script para desplegar el datatable *@
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 </body>
 
 </html>

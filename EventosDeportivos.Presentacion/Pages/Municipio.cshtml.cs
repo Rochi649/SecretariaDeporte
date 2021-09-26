@@ -14,17 +14,34 @@ namespace EventosDeportivos.Presentacion.Pages
         private static IRepositorioMunicipio _repositorioMunicipio = new RepositorioMunicipio(new EventosDeportivos.Persistencia.AppContext());
 
         public IEnumerable<Municipio> municipios;
+        [BindProperty]
+        public Municipio Municipio { get; set; }
         public void OnGet()
         {
             municipios = listarMunicipios();
         }
 
-        private static bool crearMunicipio()
+        public ActionResult OnPost()
         {
-            Console.WriteLine("Ingrese el municipio");
-            var municipio = new Municipio
+
+            bool creado = crearMunicipio();
+            if(creado)
             {
-                Nombre = Console.ReadLine()
+                Console.WriteLine("El municipio ha sido creado");
+            }
+            else
+            {
+                Console.WriteLine("Ha ocurrido un error durante la creacion");
+            }
+            return RedirectToPage("Municipio");
+        }
+
+        private bool crearMunicipio()
+        {
+            //Console.WriteLine("Ingrese el municipio");
+            var municipio = new Municipio 
+            {
+                Nombre = Municipio.Nombre
             };
             bool creado = _repositorioMunicipio.CrearMunicipio(municipio);
 
@@ -32,7 +49,7 @@ namespace EventosDeportivos.Presentacion.Pages
 
         }
 
-        private static IEnumerable<Municipio> listarMunicipios()
+        private IEnumerable<Municipio> listarMunicipios()
         {
             IEnumerable<Municipio> municipios = _repositorioMunicipio.ListarMunicipios();
             Console.WriteLine(String.Format("{0,-5} | {1,-16} |", "ID", "Nombre"));
@@ -46,7 +63,7 @@ namespace EventosDeportivos.Presentacion.Pages
             return municipios;
         }
 
-        private static bool eliminarMunicipio()
+        private bool eliminarMunicipio()
         {
             Console.Write("Ingrese el Id del municipio a eliminar: ");
             int idMunicipio = int.Parse(Console.ReadLine());
@@ -57,7 +74,7 @@ namespace EventosDeportivos.Presentacion.Pages
             return eliminado;
         }
 
-        private static bool actualizarMunicipio()
+        private bool actualizarMunicipio()
         {
             Console.WriteLine("Ingrese el Id del municipio a actualizar");
             int idMunicipio = int.Parse(Console.ReadLine());
@@ -75,7 +92,7 @@ namespace EventosDeportivos.Presentacion.Pages
             return actualizado;
         }
 
-        private static void buscarMunicipio()
+        private  void buscarMunicipio()
         {
             Console.WriteLine("Ingrese el Id del municipio a buscar:");
             int idMunicipio = int.Parse(Console.ReadLine());
