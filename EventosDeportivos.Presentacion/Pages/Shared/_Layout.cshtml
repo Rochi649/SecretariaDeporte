@@ -1,51 +1,136 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Eventos Deportivos </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link href="~/css/site.css" rel="stylesheet">
+
+    @* CSS Propio *@
+    <link href="~/styles/navbar.css" rel="stylesheet" />
+    
+    <link href="~/styles/main.css" rel="stylesheet" /> 
+    
+    @* CSS de Datatables *@
+    <link href="https://cdn.datatables.net/1.11.2/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    @* Bootstrap CSS *@
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+    @* CSS Iconos FontAwesome *@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="~/styles/Municipio/municipio.css" rel="stylesheet" />
+    <link href="~/styles/Torneo/torneo.css" rel="stylesheet" /> 
+       
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Eventos Deportivos</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacidad</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Municipio">Gestionar Municipio</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    
+    @RenderBody()
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - Eventos Deportivos - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <nav class="main-menu">
+        <ul>
+            <li>
+                <a asp-page="/Index">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text"> Inicio </span>
+                </a>
+            </li>
+            <li class="has-subnav">
+                <a asp-page="/Torneo">
+                    <i class="fa fa-trophy fa-2x"></i>
+                    <span class="nav-text"> Torneos </span>
+                </a>
+            </li>
+            <li class="has-subnav">
+                <a href="#">
+                    <i class="fa fa-users fa-2x"></i>
+                    <span class="nav-text"> Equipos </span>
+                </a>
+            </li>
+            <li class="has-subnav">
+                <a href="#">
+                    <i class="fa fa-running fa-2x"></i>
+                    <span class="nav-text"> Deportistas </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-dumbbell fa-2x"></i>
+                    <span class="nav-text"> Entrenadores </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-building fa-2x"></i>
+                    <span class="nav-text"> Escenarios </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-layer-group fa-2x"></i>
+                    <span class="nav-text"> Canchas </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-school fa-2x"></i>
+                    <span class="nav-text"> Escuelas de Arbitros </span>
+                </a>
+            </li>
+            <li>
+                <a asp-page="/Municipio">
+                    <i class="fa fa-globe-americas fa-2x"></i>
+                    <span class="nav-text"> Municipios </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-ruler fa-2x"></i>
+                    <span class="nav-text"> Arbitros </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-rocket fa-2x"></i>
+                    <span class="nav-text"> Patrocinadores </span>
+                </a>
+            </li>
+        </ul>
 
-    @RenderSection("Scripts", required: false)
+        <ul class="logout">
+            <li>
+                <a href="#">
+                    <i class="fa fa-power-off fa-2x"></i>
+                    <span class="nav-text"> Logout </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    @* JQuery *@
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    @* Javascript de Bootstrap para el Modal *@
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+
+    @* Javascript de Datatables *@
+    <script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.2/js/dataTables.bootstrap5.min.js"></script>
+    <!-- @* script para desplegar el datatable *@ -->
+    <script>
+        $(document).ready(function () {
+            var table = $('#example').DataTable({
+                pageLength: 5,
+                lengthMenu: [[5, 7], [5, 7]]
+            })
+        });
+    </script>
+    @* @RenderSection("Scripts", required: false) *@
 </body>
+
 </html>

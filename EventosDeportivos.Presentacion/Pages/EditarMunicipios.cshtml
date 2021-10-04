@@ -1,0 +1,21 @@
+﻿@page
+@model EventosDeportivos.Presentacion.Pages.EditarMunicipiosModel
+@{
+}
+
+<section id="popup-editar">
+   
+        <p class="editar-municipio">Modificar Municipio</p>
+        <form method="post">
+          <input asp-for="Municipio.Id" type="hidden" />
+          <div>
+            <label asp-for="Municipio.Nombre" class="control-label">Nombre:</label>
+            <input asp-for="Municipio.Nombre" class="form-control" />
+          </div>
+
+          <div style="margin-top: 20px">
+            <button type="submit" class="btn btn-primary">Modificar</button>
+          </div>
+        </form>
+      
+  </section>

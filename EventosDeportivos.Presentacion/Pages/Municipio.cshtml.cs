@@ -11,42 +11,65 @@ namespace EventosDeportivos.Presentacion.Pages
 {
     public class MunicipioModel : PageModel
     {
-        private static IRepositorioMunicipio _repositorioMunicipio = new RepositorioMunicipio(new EventosDeportivos.Persistencia.AppContext());
+        private static IRepositorioMunicipio _repositorioMunicipio; // = new RepositorioMunicipio(new EventosDeportivos.Persistencia.AppContext());
 
-        public IEnumerable<Municipio> municipios;
+        public IEnumerable<Municipio> municipios { get; set; }
         [BindProperty]
         public Municipio Municipio { get; set; }
-        public void OnGet()
+
+        public MunicipioModel(IRepositorioMunicipio repositorioMunicipio)
         {
-            municipios = listarMunicipios();
+            //Constructor
+            _repositorioMunicipio = repositorioMunicipio;
+        }
+        public void OnGet(int? MunicipioId)
+        {
+            if (MunicipioId.HasValue)
+            {
+                Municipio = _repositorioMunicipio.BuscarMunicipio(MunicipioId.Value);
+            }
+            else
+            {
+                municipios = listarMunicipios();
+            }
         }
 
         public ActionResult OnPost()
         {
 
-            bool creado = crearMunicipio();
-            if(creado)
+            if (Municipio.Id > 0)
             {
-                Console.WriteLine("El municipio ha sido creado");
+                _repositorioMunicipio.ActualizarMunicipio(Municipio);
             }
             else
             {
-                Console.WriteLine("Ha ocurrido un error durante la creacion");
+                bool creado = _repositorioMunicipio.CrearMunicipio(new Municipio{
+                    Nombre = Municipio.Nombre
+                });
+                if (creado)
+                {
+                    Console.WriteLine("El municipio ha sido creado");
+                }
+                else
+                {
+                    Console.WriteLine("Ha ocurrido un error durante la creacion");
+                }
             }
             return RedirectToPage("Municipio");
         }
 
-        private bool crearMunicipio()
+        public IActionResult OnGetEliminar(int Id)
         {
-            //Console.WriteLine("Ingrese el municipio");
-            var municipio = new Municipio 
+            bool eliminado = _repositorioMunicipio.EliminarMunicipio(Id);
+            if(eliminado)
             {
-                Nombre = Municipio.Nombre
-            };
-            bool creado = _repositorioMunicipio.CrearMunicipio(municipio);
-
-            return creado;
-
+                Console.WriteLine("Se ha eliminado el registro");
+            }
+            else
+            {
+                Console.WriteLine("Ha ocurrido un error en el proceso");
+            }
+            return Redirect("Municipio");
         }
 
         private IEnumerable<Municipio> listarMunicipios()
@@ -61,51 +84,6 @@ namespace EventosDeportivos.Presentacion.Pages
             }
 
             return municipios;
-        }
-
-        private bool eliminarMunicipio()
-        {
-            Console.Write("Ingrese el Id del municipio a eliminar: ");
-            int idMunicipio = int.Parse(Console.ReadLine());
-
-
-            bool eliminado = _repositorioMunicipio.EliminarMunicipio(idMunicipio);
-
-            return eliminado;
-        }
-
-        private bool actualizarMunicipio()
-        {
-            Console.WriteLine("Ingrese el Id del municipio a actualizar");
-            int idMunicipio = int.Parse(Console.ReadLine());
-            Console.WriteLine("Ingrese el nombre del municipio");
-            string nombreMunicipio = Console.ReadLine();
-
-            var municipio = new Municipio
-            {
-                Id = idMunicipio,
-                Nombre = nombreMunicipio
-            };
-
-            bool actualizado = _repositorioMunicipio.ActualizarMunicipio(municipio);
-
-            return actualizado;
-        }
-
-        private  void buscarMunicipio()
-        {
-            Console.WriteLine("Ingrese el Id del municipio a buscar:");
-            int idMunicipio = int.Parse(Console.ReadLine());
-
-            Municipio municipio = _repositorioMunicipio.BuscarMunicipio(idMunicipio);
-            if (municipio != null)
-            {
-                Console.WriteLine(municipio.Id + " " + municipio.Nombre);
-            }
-            else
-            {
-                Console.WriteLine("Ha ocurrido un error al buscar el municipio");
-            }
         }
     }
 }

@@ -1,52 +1,239 @@
 ﻿@page
 @model EventosDeportivos.Presentacion.Pages.TorneoModel
 @{
-    ViewData["Title"] = "Gestionar Torneos";
+    ViewData["Title"] = "Gestion de Torneos";
 }
 
-<!DOCTYPE html>
-<html lang="en">
+@* dotnet new page -n Torneo -na EventosDeportivos.Presentacion.Pages -o ./Pages/
+*@
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+<div class="area">
+    <section id="Principal">
+        <div class="container">
+            <h2>Gestion de Torneos</h2>
+            <div class="boton-crear">
+                <a class="btn btn-primary botonCrear" role="button" data-bs-toggle="modal" data-bs-target="#popup-crear"
+                    href="#"><i class="fa fa-pen-alt"></i>Crear</a>
+            </div>
+            <div>
+                <table id="example" class="mdl-data-table table table-striped tabla" style="width 100%">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Categoria</th>
+                            <th>Tipo</th>
+                            <th>Municipio Anfitrión</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            @* Se declara una variable para mezclar la informacion *@
+                            var i = 0;
+                            @foreach (var torneo in Model.torneos)
+                            {
+                                <tr>
+                                    <td id="id-torneo">@torneo.Id</td>
+                                    <td id="nombre-torneo">@torneo.Nombre</td>
+                                    <td id="categoria-torneo">@torneo.Categoria</td>
+                                    <td id="tipo-torneo">@torneo.Tipo</td>
+                                    <td id="municipioId-torneo">@Model.nombreMunicipios[i]</td>
+                                    <td class="acciones">
+                                        <a class="btn btn-danger btn-sm" asp-route-id="@torneo.Id"
+                                        asp-page-handler="Eliminar"><i class="fas fa-backspace"></i></a>
+                                        <a class="btn btn-primary btn-sm editar" data-id="@torneo.Id" role="button"><i
+                                            class="fas fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                                i++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 
-<body>
-    <h1>@ViewData["Title"]</h1>
+    @* <section id="modal-crear">
+        <div class="modal-torneo-container mc_crear">
+        <div class="modal-torneo modal-close m_crear">
+        <div class="close">
+        <i class="fa fa-window-close"></i>
+        </div>
+        <p class="crear-municipio">Crear Torneo</p>
 
-    <form>
-        <ul>
-            <li>
-                <label>Nombre: </label>
-                <input type="text" name="Nombre" placeholder="Nombre del Torneo" />
-            </li>
-            <li>
-                <label>Categoria: </label>
-                <input type="text" name="Categoria" placeholder="Categoria del Torneo" />
-            </li>
-            <li>
-                <label>Fecha de Inicio: </label>
-                <input type="date" name="FechaInicio"  />
-            </li>
-            <li>
-                <label>Fecha de Cierre: </label>
-                <input type="date" name="FechaFin"  />
-            </li>
-            <li>
-                <label>Tipo de Torneo: </label>
-                <input type="Text" name="TipoTorneo"  />
-            </li>
-            <li>
-                <label>Municipio donde se Realiza: </label>
-                <select>
-                    <option>Santa Marta</option>
-                </select>
-            </li>
-        </ul>
+        </div>
+        </div>
+        </section> *@
 
-    </form>
-</body>
 
-</html>
+    <section>
+        <div class="modal fade" id="popup-crear" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered ventana">
+                <div class="modal-content contenido-torneo">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Crear Torneo</h5>
+                        <div class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-window-close"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+                            <div>
+                                <label asp-for="Torneo.Nombre" class="form-label">
+                                    Nombre:
+                                </label>
+                                <input asp-for="Torneo.Nombre" type="text" class="form-control"
+                                    placeholder="Ingrese el nombre del torneo" name="Torneo.Nombre" />
+                                <label asp-for="Torneo.Categoria" class="form-label">
+                                    Categoria:
+                                </label>
+                                <select asp-for="Torneo.Categoria" name="Torneo.Categoria" class="form-control" 
+                                    name="Torneo.Categoria">
+                                    <!-- Opciones de la lista -->
+                                    <option value="Nacional">Nacional</option>
+                                    <option value="Regional" selected>Regional</option>
+                                    <option value="Comunal">Comunal</option>
+                                </select>
+                                <div class="fechas">
+                                    <label asp-for="Torneo.FechaInicio" class="form-label">Inicio:</label>
+                                    <input type="date" name="Torneo.FechaInicio" value="2021-01-01"
+                                        class="form-control">
+                                    <label asp-for="Torneo.FechaFin" class="form-label"
+                                        style="margin-left: 5px">Fin:</label>
+                                    <input type="date" name="Torneo.FechaFin" value="2021-09-01" class="form-control">
+                                </div>
+                                <label asp-for="Torneo.Tipo" class="form-label">
+                                    Tipo:
+                                </label>
+                                <input asp-for="Torneo.Tipo" type="text" class="form-control"
+                                    placeholder="Ingrese el tipo de torneo" name="Torneo.Tipo" />
+                                <label asp-for="Torneo.MunicipioId" class="form-label">
+                                    Municipio:
+                                </label>
+                                <select asp-for="Torneo.MunicipioId" name="Torneo.MunicipioId" class="form-control">
+                                    @* Se realiza despliegue de la listas de municipios en la base de datos *@
+                                    @{
+                                        var i = 1;
+                                        foreach (var municipio in Model.municipios)
+                                        {
+                                            <option value=@i>@municipio.Nombre</option>
+                                            i++;
+                                        }
+
+                                    }
+                                </select>
+                            </div>
+                            <div id="b-crear">
+                                <button type="submit" class="btn btn-primary">Crear</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="modal fade" id="popup-editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered ventana">
+                <div class="modal-content contenido-torneo">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar Torneo</h5>
+                        <div class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-window-close"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+                            <div>
+                                <input asp-for="Torneo.Id" type="hidden" id="txtId" />
+                                <label asp-for="Torneo.Nombre" class="form-label">
+                                    Nombre:
+                                </label>
+                                <input asp-for="Torneo.Nombre" type="text" class="form-control"
+                                    name="Torneo.Nombre" id="txtNombre"/>
+                                <label asp-for="Torneo.Categoria" class="form-label">
+                                    Categoria:
+                                </label>
+                                <select asp-for="Torneo.Categoria" name="Torneo.Categoria" class="form-control"
+                                    name="Torneo.Categoria" id="txtCategoria">
+                                    <!-- Opciones de la lista -->
+                                    <option value="Nacional">Nacional</option>
+                                    <option value="Regional" selected>Regional</option>
+                                    <option value="Comunal">Comunal</option>
+                                </select>
+                                <div class="fechas">
+                                    <label asp-for="Torneo.FechaInicio" class="form-label">Inicio:</label>
+                                    <input type="date" name="Torneo.FechaInicio" value="2021-01-01"
+                                        class="form-control" id="txtFechaInicio">
+                                    <label asp-for="Torneo.FechaFin" class="form-label"
+                                        style="margin-left: 5px">Fin:</label>
+                                    <input type="date" name="Torneo.FechaFin" value="2021-09-01" class="form-control" id="txtFechaFin">
+                                </div>
+                                <label asp-for="Torneo.Tipo" class="form-label">
+                                    Tipo:
+                                </label>
+                                <input asp-for="Torneo.Tipo" type="text" class="form-control"
+                                    name="Torneo.Tipo" id="txtTipo"/>
+                                <label asp-for="Torneo.MunicipioId" class="form-label">
+                                    Municipio:
+                                </label>
+                                <select asp-for="Torneo.MunicipioId" name="Torneo.MunicipioId" class="form-control" id="txtMunicipioId">
+                                    @* Se realiza despliegue de la listas de municipios en la base de datos *@
+                                    @{
+                                        var i = 1;
+                                        foreach (var municipio in Model.municipios)
+                                        {
+                                            <option value=@i>@municipio.Nombre</option>
+                                            i++;
+                                        }
+
+                                    }
+                                </select>
+                            </div>
+                            <div id="b-crear">
+                                <button type="submit" class="btn btn-primary">Modificar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("body").on('click', '.editar', function () {
+                var obj = {};
+                obj.Id = $(this).attr('data-id');
+                var id = $(this).closest('tr').find('#id-torneo').html();
+                var nombre = $(this).closest('tr').find('#nombre-torneo').html();
+                var categoria = $(this).closest('tr').find('#categoria-torneo').html();
+                var tipo = $(this).closest('tr').find('#tipo-torneo').html();
+                var municipioId = $(this).closest('tr').find('#municipioId-torneo').html();
+
+                $.ajax({
+                    url: '/Torneo',
+                    data: JSON.stringify(obj),
+                    type: 'GET',
+                    dataType: 'html',
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        /*var id = JSON.parse(response).municipio.Id;
+                        var nombre = JSON.parse(response).municipio.Nombre;*/
+                        $('#txtId').val(id);
+                        $('#txtNombre').val(nombre);
+                        $('#txtCategoria').val(categoria);
+                        $('#txtTipo').val(tipo);
+                        $('#txtMunicipioId').val(municipioId);
+                        $("#popup-editar").modal("show");
+                    }
+                });
+            });
+        });
+    </script>  
+
+</div>

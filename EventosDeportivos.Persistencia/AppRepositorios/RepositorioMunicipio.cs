@@ -20,16 +20,21 @@ namespace EventosDeportivos.Persistencia
         bool IRepositorioMunicipio.CrearMunicipio(Municipio municipio)
         {
             bool creado = false;
-            try
+            var municipio_a_crear = _dataBaseContext.Municipios.FirstOrDefault(municipioC => municipioC.Nombre == municipio.Nombre);
+            //Si el municipio a crear ya se encuentra en la base de datos, el registro no se crea
+            if (municipio_a_crear == null)
             {
-                _dataBaseContext.Municipios.Add(municipio);
-                //Es necesario guardar los cambios cada vez que se modifica informacion en la base de datos
-                _dataBaseContext.SaveChanges();
-                creado = true;
-            }
-            catch (System.Exception)
-            {
-                creado = false;
+                try
+                {
+                    _dataBaseContext.Municipios.Add(municipio);
+                    //Es necesario guardar los cambios cada vez que se modifica informacion en la base de datos
+                    _dataBaseContext.SaveChanges();
+                    creado = true;
+                }
+                catch (System.Exception)
+                {
+                    creado = false;
+                }
             }
             return creado;
         }

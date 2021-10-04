@@ -25,7 +25,11 @@ namespace EventosDeportivos.Presentacion
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            //services.AddSingleton<IRepositorioMunicipio, RepositorioMunicipio>();
+            //services.AddSingleton<IRepositorioMunicipio, RepositorioMunicipio>(); //No sirve
+            //Inyeccion de dependencia
+            services.AddScoped<IRepositorioMunicipio, RepositorioMunicipio>(); //Sirve (?)
+            //Registrar un contexto de datos
+            services.AddDbContext<EventosDeportivos.Persistencia.AppContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

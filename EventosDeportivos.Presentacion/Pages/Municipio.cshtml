@@ -1,80 +1,140 @@
 ﻿@page
 @model EventosDeportivos.Presentacion.Pages.MunicipioModel
 @{
-   
+  ViewData["Title"] = "Gestion de Municipios";
 }
 
-<!doctype html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gestion de Municipios</title>
-    <link href="https://cdn.datatables.net/1.11.2/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="~/css/estilomunicipio.css">
-</head>
-
 <body>
-    <h2>Gestion de Municipios</h2>
-    <div class="container">
-        @* Se utiliza las clases container, row y col para dividir la pantalla con bootstrap *@
-        <div class="row">
-            <div class="col">
-                @* Es necesario el metodo post para enviar los datos del formulario *@
-                <form method="post" >
-                        <div>
-                            @* Los datos del formulario se reciben gracias al asp-for y al name en el input *@
-                            <label asp-for="Municipio.Nombre" class="form-label">Nombre: </label>
-                            <input asp-for="Municipio.Nombre" type="text" class="form-control" name="Municipio.Nombre"/>
-                        </div>
-                        @* Se agrega un margin en linea para separa el boton del textfield *@
-                        <div style="margin-top: 20px">
-                             <button type="submit" class="btn btn-primary">Crear</button>
-                        </div>
-                </form>
-            </div>
-            <div class="col">
-                <table id="example" class="mdl-data-table table table-striped tabla" style="width: 100%">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nombre</th>
-                            <th width="100px">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @* Se realiza un recorrido en el objeto municipio del Model.Municipio para con ayuda del foreach mostrarlo
-                        en una tabla html *@
-                    @foreach (var municipio in Model.municipios)
-                    {
-                            <tr>
-                                <td>@municipio.Id</td>
-                                <td>@municipio.Nombre</td>
-                                <td>
-                                    <a class="btn btn-danger btn-sm table-btn"><i class="fas fa-backspace"></i></a>
-                                    <a class="btn btn-primary btn-sm table-btn"><i class="fas fa-edit"></i></a>
-                                </td>                                
-                            </tr>
-                    }
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    @* Se utiliza jquery y demas para poder desplegar las datatables *@
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.11.2/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.2/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/js/all.js" integrity="sha512-3g7yqwo1stj1EMzNXYPbV8pqgW0ZhaQsi9iyMP+hvQCIFcdt0AWw5onarTYjklFtIuCf/RvE2MGnr+5tZ1WzFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    @* script para desplegar el datatable *@
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-    </script>
-</body>
+  <section id="tabla-principal">
+    <div class="area">
+      <div class="container">
+        <h2>Gestion de Municipios</h2>
 
-</html>
+        <div class="boton-crear">
+          <a class="btn btn-primary botonCrear" role="button" data-bs-toggle="modal" data-bs-target="#popup-crear"
+            href="#"><i class="fa fa-pen-alt"></i>Crear</a>
+        </div>
+
+        <div>
+          <table id="example" class="mdl-data-table table table-striped tabla" style="width: 100%">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th class="acciones">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              @* Se realiza un recorrido en el objeto municipio del Model.Municipio para con ayuda del foreach mostrarlo
+                en una tabla html *@
+              @foreach (var municipio in Model.municipios)
+              {
+                <tr>
+                  <td id="id-municipio">@municipio.Id</td>
+                  <td id="nombre-municipio">@municipio.Nombre</td>
+                  <td class="acciones">
+                    <a class="btn btn-danger btn-sm table-btn" title="Borrar" asp-route-id="@municipio.Id"
+                    asp-page-handler="Eliminar"><i class="fas fa-backspace"></i></a>
+
+                    <a class="btn btn-primary btn-sm table-btn editar" role="button" data-id="@municipio.Id" href="#"
+                    title="Editar">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  @* asp-route-id="@municipio.Id" *@
+  <section>
+    <div class="modal fade" id="popup-crear" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered ventana" >
+        <div class="modal-content contenido-municipio">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Crear Municipio</h5>
+            <div class="close" data-bs-dismiss="modal" aria-label="Close">
+              <i class="fa fa-window-close"></i>
+            </div>
+          </div>
+          <div class="modal-body">
+            <form method="post">
+              <div>
+                <label asp-for="Municipio.Nombre" class="form-label">
+                  Nombre:
+                </label>
+                <input asp-for="Municipio.Nombre" type="text" class="form-control"
+                  placeholder="Ingrese el nombre del municipio" name="Municipio.Nombre" />
+              </div>
+              <div id="b-crear">
+                <button type="submit" class="btn btn-primary">Crear</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="modal fade" id="popup-editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered ventana">
+        <div class="modal-content contenido-municipio" >
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar Municipio</h5>
+            <div class="close" data-bs-dismiss="modal" aria-label="Close">
+              <i class="fa fa-window-close"></i>
+            </div>
+          </div>
+          <div class="modal-body">
+            <form method="post">
+              <div>                
+                <input asp-for="Municipio.Id" type="hidden" id="txtId"/>
+                <label asp-for="Municipio.Nombre" class="form-label">
+                  Nombre:
+                </label>
+                <input asp-for="Municipio.Nombre" type="text" class="form-control" name="Municipio.Nombre" id="txtNombre"/>
+              </div>
+              <div id="b-crear">
+                <button type="submit" class="btn btn-primary">Modificar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  
+   <script type="text/javascript">
+        $(function () {
+            $("body").on('click', '.editar', function () {
+                var obj = {};
+                obj.Id = $(this).attr('data-id');
+                var id = $(this).closest('tr').find('#id-municipio').html();
+                var nombre = $(this).closest('tr').find('#nombre-municipio').html();
+
+                $.ajax({
+                    url: '/Municipio',
+                    data: JSON.stringify(obj),
+                    type: 'GET',
+                    dataType: 'html',
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        /*var id = JSON.parse(response).municipio.Id;
+                        var nombre = JSON.parse(response).municipio.Nombre;*/
+                        $('#txtId').val(id);
+                        $('#txtNombre').val(nombre);
+                        $("#popup-editar").modal("show");
+                    }
+                });
+            });
+        });
+    </script>  
+
+</body>
