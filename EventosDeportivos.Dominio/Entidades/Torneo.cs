@@ -17,9 +17,9 @@ namespace EventosDeportivos.Dominio
 
         public string Categoria { get; set; }
 
-        public DateTime FechaInicio { get; set; }
+        public string FechaInicio { get; set; }
 
-        public DateTime FechaFin { get; set; }
+        public string FechaFin { get; set; }
 
         public string Tipo { get; set; }
 

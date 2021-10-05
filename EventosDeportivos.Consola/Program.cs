@@ -198,9 +198,9 @@ namespace EventosDeportivos.Consola
             Console.WriteLine("Ingrese su categoria: ");
             string categoria = Console.ReadLine();
             Console.WriteLine("Ingrese la fecha de inicio del torneo");
-            var fechaInicial = Convert.ToDateTime(Console.ReadLine());
+            var fechaInicial = Console.ReadLine();
             Console.WriteLine("Ingrese la fecha de terminacion del torneo");
-            var fechaFinal = Convert.ToDateTime(Console.ReadLine());
+            var fechaFinal = Console.ReadLine();
             Console.WriteLine("Ingrese el tipo del torneo");
             string tipo = Console.ReadLine();
             Console.WriteLine("Ingrese el numero del municipio en que se va a realizar el torneo del torneo");
@@ -247,9 +247,9 @@ namespace EventosDeportivos.Consola
             Console.WriteLine("Ingrese su categoria: ");
             string categoria = Console.ReadLine();
             Console.WriteLine("Ingrese la fecha de inicio del torneo");
-            var fechaInicial = Convert.ToDateTime(Console.ReadLine());
+            var fechaInicial = Console.ReadLine();
             Console.WriteLine("Ingrese la fecha de terminacion del torneo");
-            var fechaFinal = Convert.ToDateTime(Console.ReadLine());
+            var fechaFinal = Console.ReadLine();
             Console.WriteLine("Ingrese el tipo del torneo");
             string tipo = Console.ReadLine();
             Console.WriteLine("Ingrese el numero del municipio en que se va a realizar el torneo del torneo");

@@ -25,7 +25,7 @@ namespace EventosDeportivos.Dominio
 
         public string EPS { get; set; }
 
-        public DateTime FechaNacimiento { get; set; }
+        public string FechaNacimiento { get; set; }
 
         public string Deporte { get; set; }
 

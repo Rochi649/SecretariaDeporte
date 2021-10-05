@@ -210,6 +210,8 @@
                 var fechaFin = $(this).closest('tr').find('#fechaFin-torneo').html();
                 var municipioId = $(this).closest('tr').find('#municipioId-torneo').html();
 
+                console.log(municipioId);
+
                 $.ajax({
                     url: '/Torneo',
                     data: JSON.stringify(obj),
@@ -225,7 +227,7 @@
                         $('#txtTipo').val(tipo);
                         $('#txtFechaInicio').val(fechaInicio);
                         $('#txtFechaFin').val(fechaFin);
-                        $('#txtMunicipioId').val(municipioId);
+                        $('#txtMunicipioId option[value=municipioId]').attr('selected',true);
                         $("#popup-editar").modal("show");
                     }
                 });
