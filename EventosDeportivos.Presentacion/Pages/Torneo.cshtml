@@ -19,11 +19,13 @@
                 <table id="example" class="mdl-data-table table table-striped tabla" style="width 100%">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th style="display: none">Id</th>
                             <th>Nombre</th>
                             <th>Categoria</th>
                             <th>Tipo</th>
                             <th>Municipio Anfitrión</th>
+                            <th style="display: none">Fecha Inicio</th>
+                            <th style="display: none">Fecha Fin</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -34,11 +36,13 @@
                             @foreach (var torneo in Model.torneos)
                             {
                                 <tr>
-                                    <td id="id-torneo">@torneo.Id</td>
+                                    <td style="display: none" id="id-torneo">@torneo.Id</td>
                                     <td id="nombre-torneo">@torneo.Nombre</td>
                                     <td id="categoria-torneo">@torneo.Categoria</td>
                                     <td id="tipo-torneo">@torneo.Tipo</td>
                                     <td id="municipioId-torneo">@Model.nombreMunicipios[i]</td>
+                                    <td style="display: none" id="fechaInicio-torneo">@torneo.FechaInicio</td>
+                                    <td style="display: none" id="fechaFin-torneo">@torneo.FechaFin</td>
                                     <td class="acciones">
                                         <a class="btn btn-danger btn-sm" asp-route-id="@torneo.Id"
                                         asp-page-handler="Eliminar"><i class="fas fa-backspace"></i></a>
@@ -54,19 +58,6 @@
             </div>
         </div>
     </section>
-
-    @* <section id="modal-crear">
-        <div class="modal-torneo-container mc_crear">
-        <div class="modal-torneo modal-close m_crear">
-        <div class="close">
-        <i class="fa fa-window-close"></i>
-        </div>
-        <p class="crear-municipio">Crear Torneo</p>
-
-        </div>
-        </div>
-        </section> *@
-
 
     <section>
         <div class="modal fade" id="popup-crear" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -89,7 +80,7 @@
                                 <label asp-for="Torneo.Categoria" class="form-label">
                                     Categoria:
                                 </label>
-                                <select asp-for="Torneo.Categoria" name="Torneo.Categoria" class="form-control" 
+                                <select asp-for="Torneo.Categoria" name="Torneo.Categoria" class="form-control"
                                     name="Torneo.Categoria">
                                     <!-- Opciones de la lista -->
                                     <option value="Nacional">Nacional</option>
@@ -152,8 +143,8 @@
                                 <label asp-for="Torneo.Nombre" class="form-label">
                                     Nombre:
                                 </label>
-                                <input asp-for="Torneo.Nombre" type="text" class="form-control"
-                                    name="Torneo.Nombre" id="txtNombre"/>
+                                <input asp-for="Torneo.Nombre" type="text" class="form-control" name="Torneo.Nombre"
+                                    id="txtNombre" />
                                 <label asp-for="Torneo.Categoria" class="form-label">
                                     Categoria:
                                 </label>
@@ -166,21 +157,23 @@
                                 </select>
                                 <div class="fechas">
                                     <label asp-for="Torneo.FechaInicio" class="form-label">Inicio:</label>
-                                    <input type="date" name="Torneo.FechaInicio" value="2021-01-01"
-                                        class="form-control" id="txtFechaInicio">
+                                    <input type="date" name="Torneo.FechaInicio" value="2021-01-01" class="form-control"
+                                        id="txtFechaInicio">
                                     <label asp-for="Torneo.FechaFin" class="form-label"
                                         style="margin-left: 5px">Fin:</label>
-                                    <input type="date" name="Torneo.FechaFin" value="2021-09-01" class="form-control" id="txtFechaFin">
+                                    <input type="date" name="Torneo.FechaFin" value="2021-09-01" class="form-control"
+                                        id="txtFechaFin">
                                 </div>
                                 <label asp-for="Torneo.Tipo" class="form-label">
                                     Tipo:
                                 </label>
-                                <input asp-for="Torneo.Tipo" type="text" class="form-control"
-                                    name="Torneo.Tipo" id="txtTipo"/>
+                                <input asp-for="Torneo.Tipo" type="text" class="form-control" name="Torneo.Tipo"
+                                    id="txtTipo" />
                                 <label asp-for="Torneo.MunicipioId" class="form-label">
                                     Municipio:
                                 </label>
-                                <select asp-for="Torneo.MunicipioId" name="Torneo.MunicipioId" class="form-control" id="txtMunicipioId">
+                                <select asp-for="Torneo.MunicipioId" name="Torneo.MunicipioId" class="form-control"
+                                    id="txtMunicipioId">
                                     @* Se realiza despliegue de la listas de municipios en la base de datos *@
                                     @{
                                         var i = 1;
@@ -213,6 +206,8 @@
                 var nombre = $(this).closest('tr').find('#nombre-torneo').html();
                 var categoria = $(this).closest('tr').find('#categoria-torneo').html();
                 var tipo = $(this).closest('tr').find('#tipo-torneo').html();
+                var fechaInicio = $(this).closest('tr').find('#fechaInicio-torneo').html();
+                var fechaFin = $(this).closest('tr').find('#fechaFin-torneo').html();
                 var municipioId = $(this).closest('tr').find('#municipioId-torneo').html();
 
                 $.ajax({
@@ -228,12 +223,14 @@
                         $('#txtNombre').val(nombre);
                         $('#txtCategoria').val(categoria);
                         $('#txtTipo').val(tipo);
+                        $('#txtFechaInicio').val(fechaInicio);
+                        $('#txtFechaFin').val(fechaFin);
                         $('#txtMunicipioId').val(municipioId);
                         $("#popup-editar").modal("show");
                     }
                 });
             });
         });
-    </script>  
+    </script>
 
 </div>

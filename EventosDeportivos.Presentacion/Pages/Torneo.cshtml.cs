@@ -24,7 +24,7 @@ namespace EventosDeportivos.Presentacion.Pages
         public Municipio Municipio { get; set; }
 
         public List<string> nombreMunicipios = new List<string>();
-       
+
         public void OnGet()
         {
             torneos = listarTorneos();
@@ -38,51 +38,29 @@ namespace EventosDeportivos.Presentacion.Pages
 
         public ActionResult OnPost()
         {
-            bool creado = crearTorneo();
-            if(creado)
+            if (Torneo.Id > 0)
             {
-                Console.WriteLine("El torneo ha sido creado");
+                _repositorioTorneo.ActualizarTorneo(Torneo);
             }
             else
             {
-                Console.WriteLine("Ha ocurrido un error durante la creacion");
+                bool creado = _repositorioTorneo.CrearTorneo(Torneo);
+                if (creado)
+                {
+                    Console.WriteLine("El torneo ha sido creado");
+                }
+                else
+                {
+                    Console.WriteLine("Ha ocurrido un error durante la creacion");
+                }
             }
             return RedirectToPage("Torneo");
-        }
-
-        public bool crearTorneo()
-        {
-            bool creado = _repositorioTorneo.CrearTorneo(new Torneo
-            {
-                Nombre = Torneo.Nombre,
-                Categoria = Torneo.Categoria,
-                FechaInicio = Torneo.FechaInicio,
-                FechaFin = Torneo.FechaFin,
-                Tipo = Torneo.Tipo,
-                MunicipioId = Torneo.MunicipioId
-            });
-
-            return creado;
-        }
-        public IEnumerable<Torneo> listarTorneos()
-        {
-            IEnumerable<Torneo> torneos = _repositorioTorneo.ListarTorneos();
-            Console.WriteLine(String.Format("{0,-5} | {1,-22} | {2,-16} | {3,-16} | {4,-16} | ", "Id", "Nombre", "Categoria", "Tipo", "Ciudad Anfitriona"));
-            Console.WriteLine(String.Format("{0,-5} | {1,-22} | {2,-16} | {3,-16} | {4,-16} | ", "-----", "---------------------", "----------------", "---------",  "---------"));
-            foreach (var torneo in torneos)
-            {
-                Municipio = _repositorioMunicipio.BuscarMunicipio(torneo.MunicipioId);
-                Console.WriteLine(String.Format("{0,-5} | {1,-22} | {2,-16} | {3,-16} | {4,-16} |", torneo.Id, torneo.Nombre, torneo.Categoria, torneo.Tipo, Municipio.Nombre));
-                Console.WriteLine(String.Format("{0,-5} | {1,-22} | {2,-16} | {3,-16} | {4,-16} |", "-----", "---------------------", "----------------", "---------" ,  "---------"));
-            }
-
-            return torneos;
         }
 
         public IActionResult OnGetEliminar(int Id)
         {
             bool eliminado = _repositorioTorneo.EliminarTorneo(Id);
-            if(eliminado)
+            if (eliminado)
             {
                 Console.WriteLine("Se ha eliminado el registro");
             }
@@ -92,5 +70,21 @@ namespace EventosDeportivos.Presentacion.Pages
             }
             return Redirect("Torneo");
         }
+        public IEnumerable<Torneo> listarTorneos()
+        {
+            IEnumerable<Torneo> torneos = _repositorioTorneo.ListarTorneos();
+            Console.WriteLine(String.Format("{0,-5} | {1,-22} | {2,-16} | {3,-16} | {4,-16} | ", "Id", "Nombre", "Categoria", "Tipo", "Ciudad Anfitriona"));
+            Console.WriteLine(String.Format("{0,-5} | {1,-22} | {2,-16} | {3,-16} | {4,-16} | ", "-----", "---------------------", "----------------", "---------", "---------"));
+            foreach (var torneo in torneos)
+            {
+                Municipio = _repositorioMunicipio.BuscarMunicipio(torneo.MunicipioId);
+                Console.WriteLine(String.Format("{0,-5} | {1,-22} | {2,-16} | {3,-16} | {4,-16} |", torneo.Id, torneo.Nombre, torneo.Categoria, torneo.Tipo, Municipio.Nombre));
+                Console.WriteLine(String.Format("{0,-5} | {1,-22} | {2,-16} | {3,-16} | {4,-16} |", "-----", "---------------------", "----------------", "---------", "---------"));
+            }
+
+            return torneos;
+        }
+
+        
     }
 }
