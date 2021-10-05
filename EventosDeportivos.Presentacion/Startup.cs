@@ -28,6 +28,8 @@ namespace EventosDeportivos.Presentacion
             //services.AddSingleton<IRepositorioMunicipio, RepositorioMunicipio>(); //No sirve
             //Inyeccion de dependencia
             services.AddScoped<IRepositorioMunicipio, RepositorioMunicipio>(); //Sirve (?)
+            services.AddScoped<IRepositorioEntrenador, RepositorioEntrenador>();
+            services.AddScoped<IRepositorioEquipo, RepositorioEquipo>();
             //Registrar un contexto de datos
             services.AddDbContext<EventosDeportivos.Persistencia.AppContext>();
         }

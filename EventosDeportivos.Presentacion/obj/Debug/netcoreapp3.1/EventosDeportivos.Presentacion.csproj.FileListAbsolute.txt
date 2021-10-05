@@ -81,3 +81,5 @@
 /Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Presentacion/bin/Debug/netcoreapp3.1/EventosDeportivos.Dominio.pdb
 /Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Presentacion/bin/Debug/netcoreapp3.1/EventosDeportivos.Persistencia.pdb
 /Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Presentacion/obj/Debug/netcoreapp3.1/Razor/Pages/EditarMunicipios.cshtml.g.cs
+/Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Presentacion/obj/Debug/netcoreapp3.1/Razor/Pages/Entrenador.cshtml.g.cs
+/Users/leonardoperdomo/Documents/MISION TIC 2022/DS-C3/EventosDeportivos/EventosDeportivos/EventosDeportivos.Presentacion/obj/Debug/netcoreapp3.1/Razor/Pages/Patrocinador.cshtml.g.cs

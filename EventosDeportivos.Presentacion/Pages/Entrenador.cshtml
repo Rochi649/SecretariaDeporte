@@ -1,0 +1,151 @@
+﻿@page
+@model EventosDeportivos.Presentacion.Pages.EntrenadorModel
+@{
+    ViewData["Title"] = "Gestion de Entrenadores";
+}
+
+<body>
+    <section id="tabla-principal">
+        <div class="area">
+            <div class="container">
+                <h2>@ViewData["Title"]</h2>
+
+                <div class="boton-crear">
+                    <a class="btn btn-primary botonCrear" role="button" data-bs-toggle="modal"
+                        data-bs-target="#popup-crear" href="#"><i class="fa fa-pen-alt"></i>Crear</a>
+                </div>
+
+                <table id="example" class="mdl-data-table table table-striped tabla" style="width 100%">
+                    <thead>
+                        <tr>
+                            <th style="display: none">Id</th>
+                            <th>Documento</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Direccion</th>
+                            <th style="display: none">Genero</th>
+                            <th>Deporte</th>
+                            <th>Equipo Entrenado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            @* Se declara una variable para mezclar la informacion *@
+                            var i = 0;
+                            @foreach (var entrenador in Model.entrenadores)
+                            {
+                                <tr>
+                                    <td style="display: none" id="id-entrenador">@entrenador.Id</td>
+                                    <td id="documento-entrenador">@entrenador.Documento</td>
+                                    <td id="nombre-entrenador">@entrenador.Nombre</td>
+                                    <td id="apellido-entrenador">@entrenador.Apellido</td>
+                                    <td id="direccion-entrenador">@entrenador.Direccion</td>
+                                    <td style="display: none" id="genero-entrenador">@entrenador.Genero</td>
+                                    <td id="deporte-entrenador">@entrenador.Deporte</td>
+                                    <td id="equipo-entrenador">@Model.nombreEquipos[i]</td>
+                                    <td class="acciones">
+                                        <a class="btn btn-danger btn-sm" asp-route-id="@entrenador.Id"
+                                        asp-page-handler="Eliminar"><i class="fas fa-backspace"></i></a>
+                                        <a class="btn btn-primary btn-sm editar" data-id="@entrenador.Id" role="button"><i
+                                            class="fas fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                                i++;
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="modal fade" id="popup-crear" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered ventana">
+                <div class="modal-content contenido-entrenador">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Registrar Entrenador</h5>
+                        <div class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-window-close"></i>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label"> Documento: </label>
+                                    <input type="text" id="txtDocumento" placeholder="Ingrese el documento" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label"> Nombre: </label>
+                                    <input type="text" id="txtNombre" placeholder="Ingrese el nombre" class="form-control" />
+                                </div>
+                                <div class="col">
+                                    <label class="form-label"> Apellido: </label>
+                                    <input type="text" id="txtApellido" placeholder="Ingrese el apellido" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label"> Dirección: </label>
+                                    <input type="number" id="txtDirección" placeholder="Ingrese la dirección"
+                                        class="form-control" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label"> Género: </label>
+                                    <select id="txtGenero" class="form-control">
+                                        <option value="Femenino">Femenino</option>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label"> Deporte: </label>
+                                    <select id="txtDeporte" class="form-control">
+                                        <option value="Futbol">Fútbol</option>
+                                        <option value="Baloncesto">Baloncesto</option>
+                                        <option value="Patinaje">Patinaje </option>
+                                        <option value="Natacion">Natación</option>
+                                        <option value="Atletismo">Atletismo </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label"> Equipo Entrenado: </label>
+                                    <select id="txtEquipo" class="form-control">
+                                        @{
+                                            var i = 1;
+                                            foreach (var equipo in Model.equipos)
+                                            {
+                                                <option value=@i>@equipo.Nombre</option>
+                                                i++;
+                                            }
+
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div id="b-crear">
+                                <button type="submit" class="btn btn-primary">Crear</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>

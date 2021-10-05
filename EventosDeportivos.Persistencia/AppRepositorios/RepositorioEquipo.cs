@@ -42,13 +42,13 @@ namespace EventosDeportivos.Persistencia
             {
                 bool eliminado = false;
                 //Se busca el municipio que se va a eliminar
-                var arbitro = _dataBaseContext.Equipos.Find(idEquipo);
+                var equipo = _dataBaseContext.Equipos.Find(idEquipo);
 
-                if (arbitro != null)
+                if (equipo != null)
                 {
                     try
                     {
-                        _dataBaseContext.Equipos.Remove(arbitro);
+                        _dataBaseContext.Equipos.Remove(equipo);
                         _dataBaseContext.SaveChanges();
                         eliminado = true;
                     }
